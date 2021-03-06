@@ -8,20 +8,17 @@ const fs = require('fs');
 exports.product_getAll =  function (req, res,next) {
 
     let limit = 2
+    let offset=0;
     console.log(req.body.limit);
     if(req.body.limit != undefined)
     {
         limit = parseInt(req.body.limit);
     }
-    
-    let offset = 0 + (req.body.page - 1) * limit
-    if(offset<= 0)
+    if(req.body.page != undefined)
     {
-        offset=0;
+         offset = 0 + (req.body.page - 1) * limit
     }
-   /* product_data.findAll().then(product => {
-        res.json(product);
-    });*/
+
      const productData = product_data.findAndCountAll({
             offset: offset,
             limit: limit,
