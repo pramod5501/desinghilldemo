@@ -180,6 +180,7 @@ exports.product_getcartitems =  function (req, res,next) {
             //console.log(element.product_datum.product_data);
            // console.log(element.product_datum.product_name);
            var response={};
+           response['id']=element.id;
             response['product_id']=element.product_id;
             response['productName']= element.product_datum.product_name;
             response['sku']= element.product_datum.sku_code;
