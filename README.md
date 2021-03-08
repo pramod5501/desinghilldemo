@@ -14,8 +14,10 @@ CRUD Application API
  * file read from public/uploads/product-06.json
  * Add to Cart POST http://localhost:3000/api/product/addtocart
  * input data [user_id,product_id,quantity]
- * Get Cart items API http://localhost:3000/api/product/getcartitems
+ * Get Cart items API http://localhost:3000/api/product/getcartitems Request Type POST
  * input data [userId]
+ * Remove Cart items pass cartiem id http://localhost:3000/api/product/2/delete method will be DELETE
+ * Report get you can review from http://localhost:3000/api/report/getall Request method GET
  
 
 
