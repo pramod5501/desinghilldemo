@@ -214,5 +214,48 @@ exports.product_getcartitems =  function (req, res,next) {
        // console.log(user_cart);
   // res.json(productData);
 };
+// delete cart items
 
 
+exports.product_deleteCartItem = function(res,req,next){
+   console.log(`Delete ID== ${req.params.id}`);
+    let user_id = req.params.id;
+    let product_id = req.params.product_id;
+    let response={};
+    
+    // check 
+    if(isNaN(user_id) || isNaN(product_id))
+    {
+        response={
+            status:'error',
+            msg:"Enter valid data",
+
+        }
+        res.json(response);
+        return
+    }
+    // check item into cart
+        user_cart.findOne({where:{user_id:user_id,product_id:product_id}}).then(items=>{
+            if(items)
+            {
+                user_cart.destroy({ 
+                    where: {user_id:user_id,product_id:product_id} 
+                }).then(result => {
+                    res.status(200).json(result);
+                });
+            }else{
+                response={
+                    status:'error',
+                    msg:"Enter valid data",      
+                }
+                res.json(response);
+
+            }
+           
+            return
+        }).catch((error)=>{
+            console.log(error);
+
+        });
+
+}

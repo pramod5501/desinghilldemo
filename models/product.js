@@ -9,5 +9,9 @@ module.exports = function(sequelize, Sequelize) {
     },{
         timestamps: false
     });
+
+    ProductSchema.associate=function(models){
+        ProductSchema.hasMany(models.user_cart,{ sourceKey: 'product_id', foreignKey: 'product_id' });
+    }
     return ProductSchema;
 }
